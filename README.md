@@ -1,9 +1,7 @@
 # movie-rating-app
 A movie/ Show Rating App 
 
-==========================
 A DJANGO-BASED WEB APP  
-==========================
 
 ---------------------------------------------------------------------------------
 -> SEARCH ANY MOVIE / SHOW / SERIES 
