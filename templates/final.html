@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+   Movie Found
+{% endblock title %}
+
+
+{% block body %}
+<style>
+   p{
+     font-size: large;
+   }
+      
+</style>
+<hr>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+<img src="{{data.Poster}}" class="img-fluid img-thumbnail rounded mx-auto d-block"  alt="Not Available">
+ <br><hr>
+ <h3 style="text-align: center;">{{data.Title}}</h3><br>
+ <div class="container border border-primary">
+ 
+ <div class="card " style="width: 100%;">
+   <div class="card-body ">
+     <h5 class="card-title"></h5>
+     <p class="card-text"><b><i class="bi bi-hash"></i>&ensp;Type :</b> {{data.Type}}</p>
+     <p class="card-text"><b><i class="bi bi-calendar"></i>&ensp;Year : </b>{{data.Year}}</p>
+     <p class="card-text"></p><i class="bi bi-megaphone-fill"></i><b>&ensp;Released :</b> {{data.Released}}</p>
+ {% for i in data.Ratings %}
+ <p class="card-text"></p><i class="bi bi-star-fill"></i><b>&ensp;Rating Source:</b> {{i.Source}} , <b>Ratings : </b> {{i.Value}}</p>
+ {% endfor %}
+ 
+ 
+ <p class="card-text"></p><i class="bi bi-camera-reels-fill"></i><b>&ensp;Runtime : </b>{{data.Runtime}}</p>
+ <p class="card-text"></p><i class="bi bi-command"></i><b>&ensp;Genre :</b> {{data.Genre}}</p>
+ <p class="card-text"></p><i class="bi bi-camera-reels"></i><b>&ensp;Director(s) :</b> {{data.Director}}</p>
+ <p class="card-text"></p><i class="bi bi-pen-fill"></i><b>&ensp;Writer: </b>{{data.Writer}}</p>
+ <p class="card-text"></p><i class="bi bi-emoji-smile"></i><b>&ensp;Actors : </b>{{data.Actors}}</p>
+ <p class="card-text"></p><i class="bi bi-currency-dollar"></i><b>&ensp;Box Office :</b> {{data.BoxOffice}}</p>
+ <p class="card-text"></p><i class="bi bi-caret-up-square"></i><b>&ensp;Imdb Votes :</b> {{data.imdbVotes}}</p>
+ <p class="card-text"></p><i class="bi bi-gear-wide-connected"></i><b>&ensp;Production : </b>{{data.Production}}</p>
+ <p class="card-text"></p><i class="bi bi-sort-alpha-down"></i><b>&ensp;Language : </b>{{data.Language}}</p>
+ <p class="card-text"></p><i class="bi bi-award-fill"></i><b>&ensp;Awards : </b>{{data.Awards}}</p>
+    
+   </div>
+ </div>
+
+
+</div>
+
+  
+{% endblock body %}
+

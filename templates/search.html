@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<link rel="stylesheet" href="{% static 'css/search.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+<hr>
+<h2>Search Results for {{query}} <i class="bi bi-search"></i></h2>
+<hr>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+ {% for movie in data.Search %}
+   
+  <div class="col ">
+  <div class="card  h-100 border-primary">
+    <img src="{{movie.Poster}}" class="card-img-top" alt="Poster Not Available">
+    <div class="card-header">Title : {{movie.Title}}</div>
+    <div class="card-body text-primary">
+      <h5 class="card-title">Year : {{movie.Year}}</h5>
+      <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+      <p> Type : {{movie.Type}}</p>
+      <a href="{% url 'movie_details' movie.imdbID %}" class="stretched-link"></a>
+    </div>
+  </div>
+  </div>
+  {% endfor %}
+  
+</div>
+
+{% endblock body %}
