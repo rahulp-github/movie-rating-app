@@ -21,5 +21,13 @@ Used OMDB API key for generating Data
 -------
 Can be found at https://www.omdbapi.com/
 --------
+--------
+Deployed At https://getmovierating.herokuapp.com/
+--------
+Deployed Using heroku
+------
+Do visit The Website :)
+------
+
 
 
