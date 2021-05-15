@@ -10,6 +10,12 @@
    p{
      font-size: large;
    }
+   h3{
+     padding-left: 10px;
+   }
+   h6{
+     padding-left: 15px;
+   }
       
 </style>
 <hr>
@@ -47,6 +53,65 @@
 
 </div>
 
+
+<br>
+<!-- Comment Box -->
+<form action="" method="POST">
+  {% csrf_token %}
+<div class="container">
+<div class="card">
+  <div class="card-header">
+    Leave a comment 
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Tell us what do you think about movie</h5>
+    <label for="name" >Enter Your Name</label> <br>
+    <input type="text" name="name" placeholder="Name.." required>
+    <br><br>
+    <textarea class="card-text" name="comment" placeholder="Enter your comment here..." style="width: 100%; margin-top: 0px; margin-bottom: 0px; height: 108px;" required></textarea>
+    <button class="btn btn-primary" onclick="postClick()" type="submit">POST</button>
+  </div>
+</div>
+</div>
+</form>
+<script>
+     function postClick(){
+        alert('Thanks for the Comment Appreciated From Rahul :)')
+     }
+</script>
+
+<div class="container">
+<hr>
+<h3>All Comments [{{length}}] </h3>
+<hr>
+</div>
+<br>
+{% if comment_found %}
+{% for comment in comments %}
+<div class="container">
+<div class="card">
+  <div class="card-header">
+  <i class="bi bi-person-circle fa-lg">&nbsp; {{comment.name}}</i>
+  </div>
+  <div class="card-body">
+    <!-- <h5 class="card-title">Special title treatment</h5> -->
+    <p class="card-text">{{comment.comment}}</p>
+    
+  </div>
+  <div class="card-footer text-muted">
+    Commented on {{comment.date}}
+  </div>
   
+</div>
+</div>
+<br>
+{% endfor %}
+{% else %}
+<div class="container">
+  <h6>Be the First One to Comment &nbsp;<i class="bi bi-emoji-smile fa-lg"></i></h6>
+</div>
+{% endif %}
+
+
 {% endblock body %}
 
