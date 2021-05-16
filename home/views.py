@@ -1,4 +1,4 @@
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 import requests
 from home.models import Review
@@ -37,9 +37,9 @@ def movieDetails(request,id):
         obj.movie_id = id
         obj.movie_name = data['Title']
         obj.save()
-        comments = Review.objects.all().filter(movie_id=id)
-        
-        return render(request,'final.html',{'data':data,'comments':comments,'comment_found':True,'length':len(comments)})
+        # comments = Review.objects.all().filter(movie_id=id)
+        # #return render(request,'final.html',{'data':data,'comments':comments,'comment_found':True,'length':len(comments)})
+        return redirect('/id/'+id)
     return render(request,'final.html',{'data':data,'comments':comments,'comment_found':comment_found,'length':len(comments)})
 
 def about(request):
