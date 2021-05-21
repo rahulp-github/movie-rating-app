@@ -1,108 +1,117 @@
 {% extends 'base.html' %}
 
 {% block title %}
-   Movie Found
+Movie Found
 {% endblock title %}
 
 
 {% block body %}
 <style>
-   p{
-     font-size: large;
-   }
-   h3{
-     padding-left: 10px;
-   }
-   h6{
-     padding-left: 15px;
-   }
-      
+  p {
+    font-size: large;
+  }
+
+  h3 {
+    padding-left: 10px;
+  }
+
+  h6 {
+    padding-left: 15px;
+  }
 </style>
 <hr>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-<img src="{{data.Poster}}" class="img-fluid img-thumbnail rounded mx-auto d-block"  alt="Not Available">
- <br><hr>
- <h3 style="text-align: center;">{{data.Title}}</h3><br>
- <div class="container border border-primary">
- 
- <div class="card " style="width: 100%;">
-   <div class="card-body ">
-     <h5 class="card-title"></h5>
-     <p class="card-text"><b><i class="bi bi-hash"></i>&ensp;Type :</b> {{data.Type}}</p>
-     <p class="card-text"><b><i class="bi bi-calendar"></i>&ensp;Year : </b>{{data.Year}}</p>
-     <p class="card-text"></p><i class="bi bi-megaphone-fill"></i><b>&ensp;Released :</b> {{data.Released}}</p>
- {% for i in data.Ratings %}
- <p class="card-text"></p><i class="bi bi-star-fill"></i><b>&ensp;Rating Source:</b> {{i.Source}} , <b>Ratings : </b> {{i.Value}}</p>
- {% endfor %}
- 
- 
- <p class="card-text"></p><i class="bi bi-camera-reels-fill"></i><b>&ensp;Runtime : </b>{{data.Runtime}}</p>
- <p class="card-text"></p><i class="bi bi-command"></i><b>&ensp;Genre :</b> {{data.Genre}}</p>
- <p class="card-text"></p><i class="bi bi-camera-reels"></i><b>&ensp;Director(s) :</b> {{data.Director}}</p>
- <p class="card-text"></p><i class="bi bi-pen-fill"></i><b>&ensp;Writer: </b>{{data.Writer}}</p>
- <p class="card-text"></p><i class="bi bi-emoji-smile"></i><b>&ensp;Actors : </b>{{data.Actors}}</p>
- <p class="card-text"></p><i class="bi bi-currency-dollar"></i><b>&ensp;Box Office :</b> {{data.BoxOffice}}</p>
- <p class="card-text"></p><i class="bi bi-caret-up-square"></i><b>&ensp;Imdb Votes :</b> {{data.imdbVotes}}</p>
- <p class="card-text"></p><i class="bi bi-gear-wide-connected"></i><b>&ensp;Production : </b>{{data.Production}}</p>
- <p class="card-text"></p><i class="bi bi-sort-alpha-down"></i><b>&ensp;Language : </b>{{data.Language}}</p>
- <p class="card-text"></p><i class="bi bi-award-fill"></i><b>&ensp;Awards : </b>{{data.Awards}}</p>
-    
-   </div>
- </div>
+<img src="{{data.Poster}}" class="img-fluid img-thumbnail rounded mx-auto d-block" alt="Not Available">
+<br>
+<hr>
 
+<h3 style="text-align: center;">{{data.Title}}</h3><br>
+<div class="container border border-primary">
+
+  <div class="card " style="width: 100%;">
+    <div class="card-body ">
+      <h5 class="card-title"></h5>
+      <p class="card-text"><b><i class="bi bi-hash"></i>&ensp;Type :</b> {{data.Type}}</p>
+      <p class="card-text"><b><i class="bi bi-calendar"></i>&ensp;Year : </b>{{data.Year}}</p>
+      <p class="card-text"></p><i class="bi bi-megaphone-fill"></i><b>&ensp;Released :</b> {{data.Released}}</p>
+      {% for i in data.Ratings %}
+      <p class="card-text"></p><i class="bi bi-star-fill"></i><b>&ensp;Rating Source:</b> {{i.Source}} , <b>Ratings :
+      </b> {{i.Value}}</p>
+      {% endfor %}
+
+
+      <p class="card-text"></p><i class="bi bi-camera-reels-fill"></i><b>&ensp;Runtime : </b>{{data.Runtime}}</p>
+      <p class="card-text"></p><i class="bi bi-command"></i><b>&ensp;Genre :</b> {{data.Genre}}</p>
+      <p class="card-text"></p><i class="bi bi-camera-reels"></i><b>&ensp;Director(s) :</b> {{data.Director}}</p>
+      <p class="card-text"></p><i class="bi bi-pen-fill"></i><b>&ensp;Writer: </b>{{data.Writer}}</p>
+      <p class="card-text"></p><i class="bi bi-emoji-smile"></i><b>&ensp;Actors : </b>{{data.Actors}}</p>
+      <p class="card-text"></p><i class="bi bi-currency-dollar"></i><b>&ensp;Box Office :</b> {{data.BoxOffice}}</p>
+      <p class="card-text"></p><i class="bi bi-caret-up-square"></i><b>&ensp;Imdb Votes :</b> {{data.imdbVotes}}</p>
+      <p class="card-text"></p><i class="bi bi-gear-wide-connected"></i><b>&ensp;Production : </b>{{data.Production}}
+      </p>
+      <p class="card-text"></p><i class="bi bi-sort-alpha-down"></i><b>&ensp;Language : </b>{{data.Language}}</p>
+      <p class="card-text"></p><i class="bi bi-award-fill"></i><b>&ensp;Awards : </b>{{data.Awards}}</p>
+
+    </div>
+  </div>
 
 </div>
 
-
 <br>
+
 <!-- Comment Box -->
 <form action="" method="POST">
   {% csrf_token %}
-<div class="container">
-<div class="card">
-  <div class="card-header">
-    Leave a comment 
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        Leave a comment
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Tell us what do you think about movie</h5>
+        <label for="name">Enter Your Name</label> <br>
+        <input type="text" name="name" placeholder="Name.." required>
+        <br><br>
+        <textarea class="card-text" name="comment" placeholder="Enter your comment here..."
+          style="width: 100%; margin-top: 0px; margin-bottom: 0px; height: 108px;" required></textarea>
+        <button class="btn btn-primary" onclick="postClick()" type="submit">POST</button>
+      </div>
+    </div>
   </div>
-  <div class="card-body">
-    <h5 class="card-title">Tell us what do you think about movie</h5>
-    <label for="name" >Enter Your Name</label> <br>
-    <input type="text" name="name" placeholder="Name.." required>
-    <br><br>
-    <textarea class="card-text" name="comment" placeholder="Enter your comment here..." style="width: 100%; margin-top: 0px; margin-bottom: 0px; height: 108px;" required></textarea>
-    <button class="btn btn-primary" onclick="postClick()" type="submit">POST</button>
-  </div>
-</div>
-</div>
 </form>
+<!-- Comment Box Ends -->
+
+<!-- Function Which Display msg When Displays when someone comments-->
 <script>
-     function postClick(){
-        alert('Thanks for the Comment Appreciated From Rahul :)')
-     }
+  function postClick() {
+    alert('Thanks for the Comment Appreciated From Rahul :)')
+  }
 </script>
 
+<!-- Display All the Comments -->
 <div class="container">
-<hr>
-<h3>All Comments [{{length}}] </h3>
-<hr>
+  <hr>
+  <h3>All Comments [{{length}}] </h3>
+  <hr>
 </div>
 <br>
 {% if comment_found %}
 {% for comment in comments %}
 <div class="container">
-<div class="card">
-  <div class="card-header">
-  <i class="bi bi-person-circle fa-lg">&nbsp; {{comment.name}}</i>
+  <div class="card">
+    <div class="card-header">
+      <i class="bi bi-person-circle fa-lg">&nbsp; {{comment.name}}</i>
+    </div>
+    <div class="card-body">
+      
+      <p class="card-text">{{comment.comment}}</p>
+
+    </div>
+    <div class="card-footer text-muted">
+      Commented on {{comment.date}}
+    </div>
+
   </div>
-  <div class="card-body">
-    <!-- <h5 class="card-title">Special title treatment</h5> -->
-    <p class="card-text">{{comment.comment}}</p>
-    
-  </div>
-  <div class="card-footer text-muted">
-    Commented on {{comment.date}}
-  </div>
-  
-</div>
 </div>
 <br>
 {% endfor %}
@@ -114,4 +123,3 @@
 
 
 {% endblock body %}
-

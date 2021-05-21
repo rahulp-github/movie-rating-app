@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Top Box Office 
+
+{% endblock title %}
+
+{% block body %}
+<br>
+<div class="container">
+  <h4>Top Box Office Collection <i class="bi bi-currency-dollar fa-lg"></i></h4>
+  <br>
+ <div class="table-responsive">
+<table class="table table-bordered table-striped">
+ <thead >
+   <tr>
+     <th scope="col">Rank</th>
+     <th scope="col">Title</th>
+     <th scope="col">Revenue Weekend</th>
+     <th scope="col">Revenue Gross</th>
+     <th scope="col">Week</th>
+     <th scope="col">Link</th>
+   </tr>
+ </thead>
+ <tbody>
+  {% for title,revenue_week,revenue_gros,week,id in data %}
+   <tr>
+     <th scope="row">{{forloop.counter}}</th>
+     <td>{{title}}</td>
+     <td>{{revenue_week}}</td>
+     <td>{{revenue_gros}}</td>
+     <td>{{week}}</td>
+     <td><a href="{% url 'movie_details' id %}" role="button" class="btn btn-outline-dark">Movie Info</a></td> 
+    
+   </tr>
+ {% endfor %}
+ </tbody>
+ </table>
+</div>
+</div>
+
+
+{% endblock body%}
+
+
+
+ 

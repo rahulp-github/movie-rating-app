@@ -1,14 +1,21 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
- Movie Not found
+Movie Not found
 {% endblock title %}
 {% block body %}
 <br>
-<img src="{% static 'images/error.png' %}" class="img-fluid mx-auto d-block" width="300" height="300"  alt="Error Movie/show Not found">
+<img src="{% static 'images/error.png' %}" class="img-fluid mx-auto d-block" width="300" height="300"
+    alt="Error Movie/show Not found">
 <br>
 <div class="text-center">
-<strong><p style="font-size: larger;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"> The Search Query "{{ query}}" Does Not Match with any of our data <i class="bi bi-emoji-frown fa-lg"></i></p></strong>
-<strong><p style="font-size: larger; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"> See if there was an Typo or type some different movie/show name <i class="bi bi-emoji-smile fa-lg">&nbsp;<i class="bi bi-emoji-smile-upside-down "></i></i></p></strong>
+    <strong>
+        <p style="font-size: larger;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"> The Search Query "{{query}}" Does Not Match with any of our data <i class="bi bi-emoji-frown fa-lg"></i></p>
+    </strong>
+    <strong>
+        <p style="font-size: larger; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"> See if there was an
+            Typo or type some different movie/show name <i class="bi bi-emoji-smile fa-lg">&nbsp;<i
+                    class="bi bi-emoji-smile-upside-down "></i></i></p>
+    </strong>
 </div>>
 {% endblock body %}
