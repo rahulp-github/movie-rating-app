@@ -29,6 +29,7 @@ Used OMDB API key for generating Data
 -------
 Can be found at https://www.omdbapi.com/
 --------
+<<<<<<< HEAD
 --------
 Deployed At https://getmovierating.pythonanywhere.com/
 --------
@@ -43,6 +44,9 @@ And do Add some to your watchlist
 
 Do visit The Website :)
 ------
+=======
+
+>>>>>>> 967a31de07aa26ff254cddab123326a6a010f235
 
 
 
