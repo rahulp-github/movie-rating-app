@@ -60,15 +60,29 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active navHover" aria-current="page" href="/">Home</a>
+            <a class="nav-link active navHover" aria-current="page" href="/"><i class="bi bi-house-door-fill"></i> Home</a>
           </li>
+          {% if request.user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link active navHover" href="/about/">About Me</a>
+            <a class="nav-link active navHover" aria-current="page" href="/yourWatchlist/"><i class="bi bi-bookmark-fill"></i> Your WatchList</a>
           </li>
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link active navHover" href="/about/"><i class="bi bi-person-fill"></i> About Me </a>
+          </li>
+          
         </ul>
-      </div>
+        {% if request.user.is_authenticated %}
+        <a type="button" class="btn btn-danger" href="/logout/"><i class="bi bi-box-arrow-in-left"></i> Log Out </a> 
+        {% else %}
+        <a type="button" class="btn btn-info" href="/signup/">Sign up <i class="bi bi-person-plus-fill"></i></a> 
+        &nbsp;
+        <a type="button" class="btn btn-info" href="/signin/">Sign in <i class="bi bi-box-arrow-in-right"></i></a> 
+        {% endif %}
+       </div>
     </div>
   </nav>
+  
 <!-- NavBar ends -->
 
   <!-- Body Block for Other Templates Content-->
@@ -96,7 +110,7 @@
           role="button"><i class="fab fa-linkedin-in"></i></a>
 
         <!-- Github -->
-        <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/rahulp-github/" role="button"><i
+        <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/rahulp-github/movie-rating-app/" role="button"><i
             class="fab fa-github"></i></a>
 
       </section>

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+ Your Watch List 
+{% endblock title %}
+
+
+{% block body %}
+{% if messages %}
+{% for message  in messages %}
+
+<div class="alert alert-{{message.tags}} alert-dismissible fade show text-center" role="alert">
+    <b>{{message}}</b> 
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endfor %}
+{% endif %}
+
+<div class="container">
+    <br><h2 class="text-center">Your Watch List <i class="bi bi-list-nested fa-lg"></i></h2><hr>
+    <h4>Total Count [{{count}}] </h4><hr>
+    {% if isNull == "no" %}
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for data in data %}
+    <div class="col">
+   <div class="card border-primary">
+    <div class="card-body text-primary">
+      <h5 class="card-title">{{data.movie_name}}</h5>
+      <p class="card-text">{{data.movie_year}}</p>
+      <a href="{% url 'movie_details' data.movie_id %}" class="btn btn-outline-primary">Movie Info <i class="bi bi-info-circle"></i></a>
+      <a href="{% url 'delrecord' data.movie_id %}" class="btn btn-outline-danger">Delete <i class="bi bi-trash"></i></a>
+    </div>
+  </div>
+</div>
+  {% endfor %}
+
+  {% else %}
+  
+    <h3 class="text-center">You Have Not Added any Thing To the WatchList <i class="bi bi-emoji-expressionless"></i></h3>
+  {% endif %}
+</div>
+</div>
+{% endblock body %}

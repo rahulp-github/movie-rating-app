@@ -11,8 +11,8 @@
   <h4>Top 10 Indian Web Series <i class="bi bi-capslock-fill fa-lg"></i></h4>
   <br>
  <div class="table-responsive">
-<table class="table table-bordered table-striped">
- <thead >
+<table class="table table-bordered table-striped ">
+ <thead class="table-dark">
    <tr>
      <th scope="col">Rank</th>
      <th scope="col">Title</th>
@@ -28,7 +28,7 @@
      <td>{{title}}</td>
      <td>{{rating}}</td>
      <td>{{year}}</td>
-     <td><a href="{% url 'movie_details' id %}" role="button" class="btn btn-outline-dark">Movie Info</a></td> 
+     <td><a href="{% url 'movie_details' id %}" role="button" class="btn btn-outline-dark">Movie Info <i class="bi bi-info-circle"></i></a></td> 
     
    </tr>
  {% endfor %}

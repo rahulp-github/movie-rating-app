@@ -19,18 +19,39 @@ Movie Found
     padding-left: 15px;
   }
 </style>
+
+{% if messages %}
+{% for message  in messages %}
+
+<div class="alert alert-{{message.tags}} alert-dismissible fade show text-center" role="alert">
+    <b>{{message}}</b> 
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endfor %}
+{% endif %}
 <hr>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 <img src="{{data.Poster}}" class="img-fluid img-thumbnail rounded mx-auto d-block" alt="Not Available">
 <br>
 <hr>
 
+
 <h3 style="text-align: center;">{{data.Title}}</h3><br>
 <div class="container border border-primary">
-
+  
   <div class="card " style="width: 100%;">
     <div class="card-body ">
       <h5 class="card-title"></h5>
+      {% if request.user.is_authenticated %}
+      {% if watchListOption %}
+      <div class="text-center">
+      <a href="{% url 'watchlist' data.imdbID data.Title data.Year %}" class="btn btn-danger" role="button">Add To WatchList</a>
+      </div>
+      {% endif %}
+      {% endif %}
+      <br>
       <p class="card-text"><b><i class="bi bi-hash"></i>&ensp;Type :</b> {{data.Type}}</p>
       <p class="card-text"><b><i class="bi bi-calendar"></i>&ensp;Year : </b>{{data.Year}}</p>
       <p class="card-text"></p><i class="bi bi-megaphone-fill"></i><b>&ensp;Released :</b> {{data.Released}}</p>
@@ -51,7 +72,7 @@ Movie Found
       </p>
       <p class="card-text"></p><i class="bi bi-sort-alpha-down"></i><b>&ensp;Language : </b>{{data.Language}}</p>
       <p class="card-text"></p><i class="bi bi-award-fill"></i><b>&ensp;Awards : </b>{{data.Awards}}</p>
-
+      
     </div>
   </div>
 
@@ -65,7 +86,7 @@ Movie Found
   <div class="container">
     <div class="card">
       <div class="card-header">
-        Leave a comment
+        Leave a comment <i class="bi bi-pencil-square"></i>
       </div>
       <div class="card-body">
         <h5 class="card-title">Tell us what do you think about movie</h5>
@@ -74,19 +95,12 @@ Movie Found
         <br><br>
         <textarea class="card-text" name="comment" placeholder="Enter your comment here..."
           style="width: 100%; margin-top: 0px; margin-bottom: 0px; height: 108px;" required></textarea>
-        <button class="btn btn-primary" onclick="postClick()" type="submit">POST</button>
+        <button class="btn btn-primary" type="submit">POST </button>
       </div>
     </div>
   </div>
 </form>
 <!-- Comment Box Ends -->
-
-<!-- Function Which Display msg When Displays when someone comments-->
-<script>
-  function postClick() {
-    alert('Thanks for the Comment Appreciated From Rahul :)')
-  }
-</script>
 
 <!-- Display All the Comments -->
 <div class="container">
@@ -108,7 +122,7 @@ Movie Found
 
     </div>
     <div class="card-footer text-muted">
-      Commented on {{comment.date}}
+      Commented on {{comment.date}} ,&nbsp; {{comment.time}}
     </div>
 
   </div>

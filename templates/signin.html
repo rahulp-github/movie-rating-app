@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+ Sign in 
+{% endblock title %}
+
+{% block body %}
+<style>
+  body{
+    background-color: cornflowerblue;
+  }
+  a:hover{
+    background-color: blue;
+    color: aliceblue;
+  }
+</style>
+{% if messages %}
+{% for message  in messages %}
+
+<div class="alert alert-{{message.tags}} alert-dismissible fade show text-center" role="alert">
+    <b>{{message}}</b> 
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endfor %}
+{% endif %}
+
+          <div class="container">
+              <div class="row justify-content-center">
+                  <div class="col-lg-5">
+                      <div class="card shadow-lg border-0 rounded-lg mt-5">
+                          <div class="card-header"><h3 class="text-center font-weight-light my-4">
+                             <b>Sign In </b> <i class="bi bi-box-arrow-in-right"></i></h3></div>
+                          <div class="card-body">
+                              <form method="POST" action="">
+                                  {% csrf_token %}
+                                  <div class="form-group">
+                                      <label class="mb-1" for="username">Username</label>
+                                      <input class="form-control py-4" id="username" type="text" placeholder="Enter Username.." name="username" required/>
+                                  </div>
+                                  <div class="form-group">
+                                      <label class=" mb-1" for="inputPassword">Password</label>
+                                      <input class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" name="password" required/>
+                                  </div>
+                                  <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                                      <input class="btn btn-primary" value="Sign In" type="submit" >
+                                  </div>
+                                  <p class="text-center">Not Signed up Yet ? <a href="/signup/">Sign Up</a></p>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+
+{% endblock body %}
